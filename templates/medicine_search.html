@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Medicine</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Search Medicine</h1>
+    </header>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/logout">Logout</a>
+    </nav>
+    <div class="container">
+        <form method="POST">
+            <input type="text" name="search" placeholder="Search Medicine" required><br>
+            <button type="submit">Search</button>
+        </form>
+
+        <h2>Search Results</h2>
+        <ul>
+            {% for medicine in search_results %}
+                <li>
+                    <strong>{{ medicine['name'] }}</strong><br>
+                    Batch Number: {{ medicine['batch_number'] }}<br>
+                    Expiry Date: {{ medicine['expiry_date'] }}<br>
+                    Manufacturing Date: {{ medicine['manufacturing_date'] }}<br>
+                    Details: {{ medicine['details'] }}<br>
+                    <a href="{{ url_for('request_medicine', username=medicine['Donor'], medicine_name=medicine['name']) }}">Request</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

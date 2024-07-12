@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recipient Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Recipient Dashboard</h1>
+    </header>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/logout">Logout</a>
+    </nav>
+    <div class="container">
+        <h2>Search for Medicines</h2>
+        <form method="POST" action="/search_medicine">
+            <input type="text" name="search" placeholder="Search Medicine" required><br>
+            <button type="submit">Search</button>
+        </form>
+
+        {% if search_results %}
+            <ul>
+                {% for medicine in search_results %}
+                    <li>
+                        <strong>{{ medicine['name'] }}</strong><br>
+                        Batch Number: {{ medicine['batch_number'] }}<br>
+                        Expiry Date: {{ medicine['expiry_date'] }}<br>
+                        Manufacturing Date: {{ medicine['manufacturing_date'] }}<br>
+                        Details: {{ medicine['details'] }}<br>
+                        <form method="POST" action="/request_medicine/{{ medicine['name'] }}">
+                            <button type="submit">Request</button>
+                        </form>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No medicine found</p>
+        {% endif %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recipient Requests</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Recipient Requests</h1>
+    </header>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/logout">Logout</a>
+    </nav>
+    <div class="container">
+        <h2>Requests</h2>
+        <ul>
+            {% for request in donor_requests %}
+                <li>
+                    <a href="{{ url_for('view_request', request_id=request['id']) }}">{{ request['recipient'] }} - {{ request['medicine'] }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

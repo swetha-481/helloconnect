@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Donor Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Donor Dashboard</h1>
+    </header>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/logout">Logout</a>
+    </nav>
+    <div class="container">
+        <h2>Post Available Medicine</h2>
+        <form method="POST" action="/add_medicine">
+            <input type="text" name="name" placeholder="Medicine Name" required><br>
+            <input type="text" name="batch_number" placeholder="Batch Number" required><br>
+            <input type="date" name="expiry_date" placeholder="Expiry Date" required><br>
+            <input type="date" name="manufacturing_date" placeholder="Manufacturing Date" required><br>
+            <textarea name="details" placeholder="Additional Details" required></textarea><br>
+            <button type="submit">Add Medicine</button>
+        </form>
+
+        <h2>Recipient Requests</h2>
+        <ul>
+            {% for request in requests %}
+                <li>
+                    <a href="{{ url_for('view_request', username=request['username'], details=request['details'], medicine_name=request['medicine_name'], prescription=request['prescription'])}}">{{ request['username'] }} - {{ request['medicine_name'] }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
+
+
