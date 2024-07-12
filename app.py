@@ -6,14 +6,19 @@ import pyrebase
 
 # change
 config = {
-    "apiKey" : "AIzaSyAAkqgb_IGBeCygiQG-cs6XELII5Ap3OPs",
-    "authDomain" : "fir-auth2-826cc.firebaseapp.com",
-    "databaseURL" : "https://fir-auth2-826cc-default-rtdb.asia-southeast1.firebasedatabase.app",
-    "projectId" : "fir-auth2-826cc",
-    "storageBucket" : "fir-auth2-826cc.appspot.com",
-    "messagingSenderId" : "212779795091",
-    "appId" : "1:212779795091:web:a6adda556f9bc8e8938366"
+    
+
+  "apiKey": "AIzaSyABy38gpyLPkjghYbcVJR2Xx3wCD5J0Mhg",
+  "authDomain": "careconnect123-23cdb.firebaseapp.com",
+  "databaseURL": "https://careconnect123-23cdb-default-rtdb.firebaseio.com",
+  "projectId": "careconnect123-23cdb",
+  "storageBucket": "careconnect123-23cdb.appspot.com",
+  "messagingSenderId": "140848013906",
+  "appId": "1:140848013906:web:676f0af33cc7ba5ec8758b",
+  "measurementId": "G-1FS8TSPS59"
 }
+
+
 
 firebase = pyrebase.initialize_app(config)
 db = firebase.database()
